@@ -1,6 +1,23 @@
 const checkBalanced = (rootNode) => {
-  /* Your code here */
+  let leavesLeft = 0;
+  let leavesRight = 0;
 
+  function countLeaves(node) {
+    let count = 1;
+    if (node.left) {
+      count++;
+      countLeaves(node.left, count);
+    }
+    if (node.right) {
+      count++;
+      countLeaves(node.right, count);
+    }
+    return count;
+  }
+
+    if (rootNode.right) leavesRight = countLeaves(rootNode.right, leavesRight);
+    if (rootNode.left) leavesLeft = countLeaves(rootNode.left, leavesLeft);
+    return leavesLeft === leavesRight;
 };
 
 class BinarySearchTree {
